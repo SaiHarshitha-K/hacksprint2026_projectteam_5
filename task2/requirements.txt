@@ -1,0 +1,9 @@
+pandas
+openpyxl
+numpy
+python-dateutil
+PyMuPDF
+faiss-cpu
+sentence-transformers
+streamlit
+google-genai
