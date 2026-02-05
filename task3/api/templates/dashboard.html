@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NewsStream AI Dashboard</title>
+    <style>
+        body { font-family: Arial; margin: 40px; background: #fafafa; }
+        h1 { color: #2c3e50; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+        th, td { border: 1px solid #ccc; padding: 8px; }
+        th { background-color: #f4f4f4; }
+        .badge { padding: 4px 8px; border-radius: 4px; color: white; }
+        .Political { background: #8e44ad; }
+        .Entertainment { background: #27ae60; }
+        .Threatful { background: #c0392b; }
+        .Author\ Opinion { background: #2980b9; }
+        .Neutral { color: #555; }
+        .Positive { color: #27ae60; }
+        .Negative { color: #c0392b; }
+    </style>
+</head>
+
+<body>
+
+<h1>📰 NewsStream AI — Dashboard</h1>
+
+<h2>📊 Category Distribution</h2>
+<table>
+<tr><th>Category</th><th>Count</th></tr>
+{% for c in categories %}
+<tr>
+    <td>{{ c._id }}</td>
+    <td>{{ c.count }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<h2>😊 Sentiment Distribution</h2>
+<table>
+<tr><th>Sentiment</th><th>Count</th></tr>
+{% for s in sentiments %}
+<tr>
+    <td>{{ s._id }}</td>
+    <td>{{ s.count }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<h2>🗞 Latest Articles (Cleaned)</h2>
+<table>
+<tr>
+    <th>Title</th>
+    <th>Category</th>
+    <th>Sentiment</th>
+    <th>Summary</th>
+</tr>
+{% for a in articles %}
+<tr>
+    <td>{{ a.title }}</td>
+    <td><span class="badge {{ a.predicted_category }}">{{ a.predicted_category }}</span></td>
+    <td class="{{ a.sentiment }}">{{ a.sentiment }}</td>
+    <td>{{ a.summary }}</td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
